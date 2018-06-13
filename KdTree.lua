@@ -174,7 +174,9 @@ function KdTree:buildObstacleTreeRecursive( obstacles )
 	end
 
 	local leftObstacles = Vector.new()
+	leftObstacles:setSize( minLeft )
 	local rightObstacles = Vector.new()
+	rightObstacles:setSize( minRight )
 
 	local leftCounter = 0
     local rightCounter = 0
@@ -192,10 +194,10 @@ function KdTree:buildObstacleTreeRecursive( obstacles )
             local j2LeftOfI = RVOMath.leftOf(obstacleI1.point, obstacleI2.point, obstacleJ2.point)
 
             if j1LeftOfI >= -RVOMath.RVO_EPSILON and j2LeftOfI >= -RVOMath.RVO_EPSILON then
-            	leftObstacles[leftCounter] = obstacles:get()[j]
+            	leftObstacles:get()[leftCounter] = obstacles:get()[j]
             	leftCounter = leftCounter + 1
             elseif j1LeftOfI <= RVOMath.RVO_EPSILON and j2LeftOfI <= RVOMath.RVO_EPSILON then
-            	rightObstacles[rightCounter] = obstacles:get()[j]
+            	rightObstacles:get()[rightCounter] = obstacles:get()[j]
             	rightCounter = rightCounter + 1
             else
             	local t = RVOMath.det(obstacleI2.point:minus(obstacleI1.point), obstacleJ1.point:minus(obstacleI1.point)) / RVOMath.det(obstacleI2.point:minus(obstacleI1.point), obstacleJ1.point:minus(obstacleJ2.point))
@@ -215,14 +217,14 @@ function KdTree:buildObstacleTreeRecursive( obstacles )
                 obstacleJ2.prevObstacle = newObstacle
 
                 if j1LeftOfI > 0.0 then
-                	leftObstacles[leftCounter] = obstacleJ1
+                	leftObstacles:get()[leftCounter] = obstacleJ1
                 	leftCounter = leftCounter + 1
-                    rightObstacles[rightCounter] = newObstacle
+                    rightObstacles:get()[rightCounter] = newObstacle
                     rightCounter = rightCounter + 1
                 else
-                	rightObstacles[rightCounter] = obstacleJ1
+                	rightObstacles:get()[rightCounter] = obstacleJ1
                 	rightCounter = rightCounter + 1
-                    leftObstacles[leftCounter] = newObstacle
+                    leftObstacles:get()[leftCounter] = newObstacle
                     leftCounter = leftCounter + 1
                 end
             end
