@@ -24,7 +24,7 @@ local _sim = RVOSimulator.new()
 _sim:setTimeStep(1)
 _sim:setAgentDefaults(400, 30, 600, 600, 20, 10.0, Vector2.new(1, 1))
 
-
+-- add some more Agent. Agent is move point.
 local NUM_AGENTS = 20
 for i=0,NUM_AGENTS-1 do
     local angle = i * (2*RVOMath.M_PI) / NUM_AGENTS
@@ -43,6 +43,7 @@ local vertices = Vector.new()
 
 local t3 = {}
 
+-- a Triangle Obstacle.
 for i=0,3-1 do
     local angle = i * (2*RVOMath.M_PI) / 3
     local x = math.cos(angle) * 50
@@ -50,9 +51,11 @@ for i=0,3-1 do
     vertices:push(Vector2.new(x,y))
     table.insert( t3, cc.p( x, y ) )
 end
-        
+
+-- add a Triangle Obstacle.
 _sim:addObstacle( vertices )
 
+-- init all Obstacle.
 _sim:processObstacles()
 
 ~~~~
