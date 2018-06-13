@@ -27,6 +27,7 @@ function Agent:ctor( sim )
 	self.timeHorizonObst = 0.0
 	self.velocity = Vector2.new(0,0) -- Vector2
 	self.id = 0
+    self.rnd = Vector2.new(0,0)
 end
 
 function Agent:computeNeighbors()
@@ -313,9 +314,8 @@ function Agent:insertObstacleNeighbor( obstacle, rangeSq )
 end
 
 function Agent:update()
-	local rnd = Vector2.new(0,0)
-    self.velocity = self.newVelocity:plus(rnd)
-    self.position = self.position:plus(self.newVelocity:scale(self.simulator.timeStep))
+    self.velocity = self.newVelocity:plus(self.rnd)
+    self.position:plusMe(self.newVelocity:scale(self.simulator.timeStep))
 end
 
 function Agent:linearProgram1( lines, lineNo, radius, optVelocity, directionOpt )

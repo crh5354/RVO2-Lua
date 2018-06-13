@@ -19,7 +19,7 @@ function Vector:get()
 	return self.vector
 end
 
-function Vector:setSize( num, data )
+function Vector:resize( num, data )
 	self.length = num
 end
 

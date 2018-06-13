@@ -14,6 +14,11 @@ function Vector2:plus( vector )
 	return Vector2.new(self.x + vector.x, self.y + vector.y)
 end
 
+function Vector2:plusMe( vector )
+	self.x = self.x + vector.x
+	self.y = self.y + vector.y
+end
+
 function Vector2:minus( vector )
 	return Vector2.new(self.x - vector.x, self.y - vector.y)
 end

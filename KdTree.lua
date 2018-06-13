@@ -174,9 +174,9 @@ function KdTree:buildObstacleTreeRecursive( obstacles )
 	end
 
 	local leftObstacles = Vector.new()
-	leftObstacles:setSize( minLeft )
+	leftObstacles:resize( minLeft )
 	local rightObstacles = Vector.new()
-	rightObstacles:setSize( minRight )
+	rightObstacles:resize( minRight )
 
 	local leftCounter = 0
     local rightCounter = 0
