@@ -68,7 +68,7 @@ for i=0,self._sim:getNumAgents()-1 do
 	print( i, _sim:getAgentPosition(i).x, _sim:getAgentPosition(i).y )
 end
 
-_sim:run()
+_sim:doStep()
 
 ~~~~
 

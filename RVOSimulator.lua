@@ -100,7 +100,7 @@ function RVOSimulator:setAgentDefaults(neighborDist, maxNeighbors, timeHorizon, 
     self.defaultAgent.velocity = velocity
 end
 
-function RVOSimulator:run()	
+function RVOSimulator:doStep()	
 	self.kdTree:buildAgentTree()
 
     for i=0,self:getNumAgents()-1 do
